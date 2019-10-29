@@ -1,0 +1,22 @@
+import scala.io.Source
+
+val lines = Source.fromFile("C:\\Users\\Brandon\\Documents\\GitHub\\taller-nro-3-BrandonVS\\data\\GLigaPro_2019.csv").getLines.drop(1).toList
+
+val data = lines.map(
+   line => line.split(";") match { 
+      case Array(a, b, c, d, e) => (a.trim, b.trim, c.trim, d.trim.toInt, e.trim) 
+   })
+
+val ejercicio1 = data.filter(_._4 > 10).map(_._1)
+
+val ejercicio2 = data.filter(_._4 > 10).sortBy(_._4).map(_._1)
+
+val ejercicio3 = data.maxBy(_._4)._2
+
+val ejercicio4 = data.maxBy(_._4)._3
+
+val ejercicio5 = data.filter(_._5 != "No").map(_._1)
+
+val ejercicio6 = data.groupBy(_._4)
+
+val ejercicio7 = data.groupBy(_._2)
